@@ -1,64 +1,77 @@
-<header>
-  <nav class="container relative mx-auto p-6">
-    <div class="flex items-center justify-between">
-      <h2 class="pb-8 text-2xl">Job Search Tracker</h2>
-
-      <div [hidden]="!loggedIn" class="dropdown pb-8" dropdown>
-        <a
-          class="dropdown-toggle text-grayishViolet hover:text-veryDarkViolet"
-          dropdownToggle
-          >Welcome User</a
-        >
-        <div class="dropdown-menu" *dropdownMenu>
-          <a class="dropdown-item">Edit Profile</a>
-          <a class="dropdown-item" (click)="logout()">Logout</a>
-        </div>
+<body>
+  <nav class="tw-container tw-relative tw-mx-auto tw-p-6">
+    <div class="tw-flex tw-items-center tw-justify-between">
+      <div class="tw-flex tw-items-center tw-space-x-20">
+        <h2 class="tw-pb-8 tw-text-3xl">Job Search Tracker</h2>
       </div>
-
-      <form
-        [hidden]="loggedIn"
-        class="flex items-center justify-between"
-        #loginForm="ngForm"
-        (ngSubmit)="login()"
-        autocomplete="off"
+      <!-- Right Buttons Menu -->
+      <div
+        class="tw-hidden tw-items-center tw-space-x-6 tw-font-bold tw-text-grayishViolet lg:tw-flex"
       >
-        <input
-          name="username"
-          [(ngModel)]="model.username"
-          type="text"
-          class="mt-1 mb-5 w-full rounded-lg border px-3 py-2 text-sm"
-          placeholder="UserName"
-        />
-
-        <input
-          name="password"
-          [(ngModel)]="model.password"
-          type="password"
-          type="password"
-          class="mt-1 mb-5 ml-2 w-full rounded-lg border py-2 px-3 text-sm"
-          placeholder="password"
-        />
-        <button
-          type="submit"
-          class="mt-1 mb-5 ml-2 inline-block w-full rounded-lg bg-blue-500 py-2 text-center text-sm font-semibold text-white shadow-sm transition duration-200 hover:bg-blue-600 hover:shadow-md focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50"
+        <div
+          [hidden]="!(accountService.currentUser$ | async)"
+          class="dropdown tw-pb-8"
+          dropdown
         >
-          <span class="mr-2 inline-block">Login</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            class="inline-block h-4 w-4"
+          <a
+            class="dropdown-toggle tw-text-grayishViolet hover:tw-text-veryDarkViolet"
+            dropdownToggle
+            >Welcome User</a
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M17 8l4 4m0 0l-4 4m4-4H3"
-            />
-          </svg>
-        </button>
-      </form>
+          <div class="dropdown-menu" *dropdownMenu>
+            <a class="dropdown-item">Edit Profile</a>
+            <a class="dropdown-item" (click)="logout()">Logout</a>
+          </div>
+        </div>
+
+        <form
+          [hidden]="accountService.currentUser$ | async"
+          class="tw-flex tw-items-center tw-justify-between"
+          #loginForm="ngForm"
+          (ngSubmit)="login()"
+          autocomplete="off"
+        >
+          <input
+            name="username"
+            [(ngModel)]="model.username"
+            type="text"
+            autocomplete="off"
+            class="tw-mt-1 tw-mb-5 tw-w-full tw-rounded-lg tw-border tw-px-3 tw-py-2 tw-text-sm"
+            placeholder="UserName"
+          />
+
+          <input
+            name="password"
+            [(ngModel)]="model.password"
+            type="password"
+            autocomplete="off"
+            class="tw-mt-1 tw-mb-5 tw-ml-2 tw-w-full tw-rounded-lg tw-border tw-py-2 tw-px-3 tw-text-sm"
+            placeholder="password"
+          />
+          <button
+            type="submit"
+            class="tw-mt-1 tw-mb-5 tw-ml-2 tw-inline-block tw-w-full tw-rounded-lg tw-bg-darkViolet tw-py-2 tw-text-center tw-text-sm tw-font-semibold tw-text-white tw-shadow-sm tw-transition tw-duration-200 hover:tw-bg-darkViolet hover:tw-shadow-md focus:tw-bg-darkViolet focus:tw-bg-darkViolet focus:tw-shadow-sm focus:tw-ring-4 focus:tw-ring-opacity-50"
+          >
+            <span class="tw-mr-2 tw-inline-block">Login</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              class="tw-inline-block tw-h-4 tw-w-4"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </button>
+        </form>
+      </div>
+      <!-- @todo Hamburger Menu -->
     </div>
+    <!-- @todo Mobile Menu -->
   </nav>
-</header>
+</body>
