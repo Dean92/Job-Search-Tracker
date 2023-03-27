@@ -6,7 +6,7 @@
     class="tw-mb-44 tw-flex tw-flex-col tw-space-y-10 lg:tw-mt-16 lg:tw-w-1/2 xl:tw-mb-52"
   >
     <h1
-      class="tw-text-center tw-text-5xl tw-font-bold lg:tw-max-w-md lg:tw-text-left lg:tw-text-6xl"
+      class="tw-text-center tw-text-3xl tw-font-bold lg:tw-max-w-md lg:tw-text-left lg:tw-text-6xl"
     >
       Start a better way of tracking your job search.
     </h1>
@@ -23,31 +23,19 @@
         class="tw-rounded-full tw-bg-cyan tw-py-5 tw-px-10 tw-text-2xl tw-font-bold tw-text-white hover:tw-text-white hover:tw-opacity-70 lg:tw-py-4"
         >Register</a
       >
-
-      <!-- <a
-        (click)="registerToggle()"
-        class="rounded-full bg-darkViolet py-5 px-10 text-2xl font-bold text-white hover:opacity-70 hover:opacity-70 lg:py-4"
-        >Learn More</a
-      > -->
     </div>
-
-    <!-- <button
-        (click)="registerToggle()"
-        class="group relative h-12 w-48 overflow-hidden rounded-2xl bg-blue-500 text-lg font-bold text-white"
-      >
-        Register
-      </button>
-      <button
-        (click)="registerToggle()"
-        class="group relative h-12 w-48 overflow-hidden rounded-2xl bg-darkViolet text-lg font-bold text-white"
-      >
-        Learn More
-      </button> -->
+  </div>
+  <!-- Image -->
+  <div class="tw-w-25 md:tw-w-50 tw-mx-auto tw-mb-24 lg:tw-mb-0 lg:tw-w-1/2">
+    <img src="assets/images/heroImage.jpg" alt="image goes here" />
   </div>
 </section>
 
-<div [hidden]="!registerMode" class="container">
-  <div class="tw-flex tw-content-center">
-    <app-register></app-register>
+<div
+  [hidden]="!registerMode"
+  class="tw-container tw-mx-auto tw-flex tw-flex-col-reverse tw-p-6 lg:tw-flex-row"
+>
+  <div class="">
+    <app-register [usersFromHomeComponent]="users"></app-register>
   </div>
 </div>
