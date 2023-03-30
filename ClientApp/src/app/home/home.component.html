@@ -1,1 +1,41 @@
-<h1 class="py-8 px-3 text-red-300">Home Page Goes Here</h1>
+<section
+  [hidden]="registerMode"
+  class="tw-container tw-mx-auto tw-flex tw-flex-col-reverse tw-p-6 lg:tw-flex-row"
+>
+  <div
+    class="tw-mb-44 tw-flex tw-flex-col tw-space-y-10 lg:tw-mt-16 lg:tw-w-1/2 xl:tw-mb-52"
+  >
+    <h1
+      class="tw-text-center tw-text-3xl tw-font-bold lg:tw-max-w-md lg:tw-text-left lg:tw-text-6xl"
+    >
+      Start a better way of tracking your job search.
+    </h1>
+    <p
+      class="tw-text-center tw-text-2xl tw-text-gray-400 lg:tw-max-w-md lg:tw-text-left"
+    >
+      Track the jobs you applied for in a dynamic way and find the best job on
+      the market.
+    </p>
+    <div class="tw-mx-auto lg:tw-mx-0">
+      <a
+        style="cursor: pointer"
+        (click)="registerToggle()"
+        class="tw-rounded-full tw-bg-cyan tw-py-5 tw-px-10 tw-text-2xl tw-font-bold tw-text-white hover:tw-text-white hover:tw-opacity-70 lg:tw-py-4"
+        >Register</a
+      >
+    </div>
+  </div>
+  <!-- Image -->
+  <div class="tw-w-25 md:tw-w-50 tw-mx-auto tw-mb-24 lg:tw-mb-0 lg:tw-w-1/2">
+    <img src="assets/images/heroImage.jpg" alt="image goes here" />
+  </div>
+</section>
+
+<div
+  [hidden]="!registerMode"
+  class="tw-container tw-mx-auto tw-flex tw-flex-col-reverse tw-p-6 lg:tw-flex-row"
+>
+  <div class="">
+    <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
+  </div>
+</div>

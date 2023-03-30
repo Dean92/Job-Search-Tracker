@@ -1,63 +1,77 @@
-<!-- <header>
-  <nav
-    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
-  >
-    <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']">JobSearchTracker</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target=".navbar-collapse"
-        aria-label="Toggle navigation"
-        [attr.aria-expanded]="isExpanded"
-        (click)="toggle()"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div
-        class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
-        [ngClass]="{ show: isExpanded }"
-      >
-        <ul class="navbar-nav flex-grow">
-          <li
-            class="nav-item"
-            [routerLinkActive]="['link-active']"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/counter']"
-              >Counter</a
-            >
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/fetch-data']"
-              >Fetch data</a
-            >
-          </li>
-        </ul>
+<body>
+  <nav class="tw-container tw-relative tw-mx-auto tw-p-6">
+    <div class="tw-flex tw-items-center tw-justify-between">
+      <div class="tw-flex tw-items-center tw-space-x-20">
+        <h2 class="tw-pb-8 tw-text-3xl">Job Search Tracker</h2>
       </div>
-    </div>
-  </nav>
-</header> -->
-<nav class="container relative mx-auto p-6">
-  <div class="flex items-center justify-between">
-    <div class="flex items-center space-x-20">
-      <h2 class="text-2xl">Job Search Tracker</h2>
-      <div class="hidden space-x-8 font-bold lg:flex"></div>
-    </div>
-    <!-- Right Side Links -->
-    <div
-      class="hidden items-center space-x-6 font-bold text-grayishViolet lg:flex"
-    >
-      <a href="#" class="hover:text-veryDarkViolet">Login</a>
-      <a
-        href="#"
-        class="rounded-full bg-cyan px-8 py-3 font-bold text-white hover:opacity-70"
-        >Register</a
+      <!-- Right Buttons Menu -->
+      <div
+        class="tw-hidden tw-items-center tw-space-x-6 tw-font-bold tw-text-grayishViolet lg:tw-flex"
       >
+        <div
+          [hidden]="!(accountService.currentUser$ | async)"
+          class="dropdown tw-pb-8"
+          dropdown
+        >
+          <a
+            class="dropdown-toggle tw-text-grayishViolet hover:tw-text-veryDarkViolet"
+            dropdownToggle
+            >Welcome User</a
+          >
+          <div class="dropdown-menu" *dropdownMenu>
+            <a class="dropdown-item">Edit Profile</a>
+            <a class="dropdown-item" (click)="logout()">Logout</a>
+          </div>
+        </div>
+
+        <form
+          [hidden]="accountService.currentUser$ | async"
+          class="tw-flex tw-items-center tw-justify-between"
+          #loginForm="ngForm"
+          (ngSubmit)="login()"
+          autocomplete="off"
+        >
+          <input
+            name="username"
+            [(ngModel)]="model.username"
+            type="text"
+            autocomplete="off"
+            class="tw-mt-1 tw-mb-5 tw-w-full tw-rounded-lg tw-border tw-px-3 tw-py-2 tw-text-sm"
+            placeholder="UserName"
+          />
+
+          <input
+            name="password"
+            [(ngModel)]="model.password"
+            type="password"
+            autocomplete="off"
+            class="tw-mt-1 tw-mb-5 tw-ml-2 tw-w-full tw-rounded-lg tw-border tw-py-2 tw-px-3 tw-text-sm"
+            placeholder="password"
+          />
+          <button
+            type="submit"
+            class="tw-mt-1 tw-mb-5 tw-ml-2 tw-inline-block tw-w-full tw-rounded-lg tw-bg-darkViolet tw-py-2 tw-text-center tw-text-sm tw-font-semibold tw-text-white tw-shadow-sm tw-transition tw-duration-200 hover:tw-bg-darkViolet hover:tw-shadow-md focus:tw-bg-darkViolet focus:tw-bg-darkViolet focus:tw-shadow-sm focus:tw-ring-4 focus:tw-ring-opacity-50"
+          >
+            <span class="tw-mr-2 tw-inline-block">Login</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              class="tw-inline-block tw-h-4 tw-w-4"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </button>
+        </form>
+      </div>
+      <!-- @todo Hamburger Menu -->
     </div>
-  </div>
-</nav>
+    <!-- @todo Mobile Menu -->
+  </nav>
+</body>
