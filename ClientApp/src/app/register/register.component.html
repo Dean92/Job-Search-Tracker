@@ -12,13 +12,14 @@
             <label
               for="email"
               class="tw-mb-2 tw-block tw-text-sm tw-text-gray-600"
-              >Email Address</label
+              >User Name</label
             >
             <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="you@company.com"
+              type="text"
+              name="username"
+              [(ngModel)]="model.username"
+              id="username"
+              placeholder="username..."
               autocomplete="off"
               class="tw-w-full tw-rounded-md tw-border tw-border-gray-300 tw-px-3 tw-py-2 tw-placeholder-gray-300 focus:tw-border-indigo-300 focus:tw-outline-none focus:tw-ring focus:tw-ring-indigo-100"
             />
@@ -32,6 +33,7 @@
             <input
               type="password"
               name="password"
+              [(ngModel)]="model.password"
               id="password"
               placeholder="Your Password"
               autocomplete="off"
@@ -43,6 +45,13 @@
             class="tw-mt-1 tw-mb-5 tw-ml-2 tw-inline-block tw-w-full tw-rounded-lg tw-bg-blue-500 tw-py-2 tw-text-center tw-text-sm tw-font-semibold tw-text-white tw-shadow-sm tw-transition tw-duration-200 hover:tw-bg-blue-600 hover:tw-shadow-md focus:tw-bg-blue-700 focus:tw-shadow-sm focus:tw-ring-4 focus:tw-ring-blue-500 focus:tw-ring-opacity-50"
           >
             <span class="mr-2 inline-block">Sign Up</span>
+          </button>
+          <button
+            type="button"
+            class="tw-mt-1 tw-mb-5 tw-ml-2 tw-inline-block tw-w-full tw-rounded-lg tw-bg-blue-500 tw-py-2 tw-text-center tw-text-sm tw-font-semibold tw-text-white tw-shadow-sm tw-transition tw-duration-200 hover:tw-bg-blue-600 hover:tw-shadow-md focus:tw-bg-blue-700 focus:tw-shadow-sm focus:tw-ring-4 focus:tw-ring-blue-500 focus:tw-ring-opacity-50"
+            (click)="cancel()"
+          >
+            <span class="mr-2 inline-block">Cancel</span>
           </button>
         </form>
       </div>

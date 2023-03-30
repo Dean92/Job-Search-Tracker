@@ -36,6 +36,6 @@
   class="tw-container tw-mx-auto tw-flex tw-flex-col-reverse tw-p-6 lg:tw-flex-row"
 >
   <div class="">
-    <app-register [usersFromHomeComponent]="users"></app-register>
+    <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
   </div>
 </div>
