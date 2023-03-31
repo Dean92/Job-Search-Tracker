@@ -11,6 +11,9 @@ import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { RegisterComponent } from './register/register.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { JobListComponent } from './job-list/job-list.component';
+import { UserHomeComponent } from './user-home/user-home.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,9 @@ import { RegisterComponent } from './register/register.component';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
+    PageNotFoundComponent,
+    JobListComponent,
+    UserHomeComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -27,8 +33,12 @@ import { RegisterComponent } from './register/register.component';
     FormsModule,
     BsDropdownModule.forRoot(),
     RouterModule.forRoot([
-      // { path: 'login', component: LoginComponent },
-      // { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: HomeComponent },
+      { path: 'home', component: HomeComponent },
+      { path: 'job-list', component: JobListComponent },
+      { path: 'user-home', component: UserHomeComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: '**', component: PageNotFoundComponent },
     ]),
   ],
   providers: [],
