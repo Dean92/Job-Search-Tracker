@@ -13,14 +13,14 @@
         class="tw-hidden tw-items-center tw-space-x-6 tw-font-bold tw-text-grayishViolet lg:tw-flex"
       >
         <div
-          [hidden]="!(accountService.currentUser$ | async)"
+          *ngIf="accountService.currentUser$ | async as user"
           class="dropdown tw-pb-8"
           dropdown
         >
           <a
             class="dropdown-toggle tw-text-grayishViolet hover:tw-text-veryDarkViolet"
             dropdownToggle
-            >Welcome User</a
+            >Welcome {{ user.username | titlecase }}</a
           >
           <div class="dropdown-menu" *dropdownMenu>
             <a class="dropdown-item">Edit Profile</a>

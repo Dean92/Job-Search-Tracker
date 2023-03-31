@@ -9,11 +9,12 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { RegisterComponent } from './register/register.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { JobListComponent } from './job-list/job-list.component';
 import { UserHomeComponent } from './user-home/user-home.component';
+import { AuthGuard } from './_guards/auth.guard';
+import { SharedModule } from './_modules/shared.module';
 
 @NgModule({
   declarations: [
@@ -29,14 +30,27 @@ import { UserHomeComponent } from './user-home/user-home.component';
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     BrowserAnimationsModule,
+
     HttpClientModule,
     FormsModule,
-    BsDropdownModule.forRoot(),
+    SharedModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
+      {
+        path: '',
+        runGuardsAndResolvers: 'always',
+        canActivate: [AuthGuard],
+        children: [
+          { path: 'job-list', component: JobListComponent },
+          {
+            path: 'user-home',
+            component: UserHomeComponent,
+          },
+        ],
+      },
+
       { path: 'home', component: HomeComponent },
-      { path: 'job-list', component: JobListComponent },
-      { path: 'user-home', component: UserHomeComponent },
+
       { path: 'register', component: RegisterComponent },
       { path: '**', component: PageNotFoundComponent },
     ]),
