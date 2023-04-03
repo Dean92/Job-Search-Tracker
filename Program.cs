@@ -1,6 +1,7 @@
 using JobSearchTracker.Data;
 using JobSearchTracker.Extensions;
 using JobSearchTracker.Interfaces;
+using JobSearchTracker.Middleware;
 using JobSearchTracker.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -22,6 +23,7 @@ builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddIdentityServices(builder.Configuration);
 
 var app = builder.Build();
+app.UseMiddleware<ExceptionMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
