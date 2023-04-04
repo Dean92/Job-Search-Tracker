@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -15,6 +15,8 @@ import { JobListComponent } from './job-list/job-list.component';
 import { UserHomeComponent } from './user-home/user-home.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { SharedModule } from './_modules/shared.module';
+import { TestErrorComponent } from './errors/test-error/test-error.component';
+import { ErrorInterceptor } from './_interceptors/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { SharedModule } from './_modules/shared.module';
     PageNotFoundComponent,
     JobListComponent,
     UserHomeComponent,
+    TestErrorComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -50,12 +53,15 @@ import { SharedModule } from './_modules/shared.module';
       },
 
       { path: 'home', component: HomeComponent },
-
+      { path: 'not-found', component: PageNotFoundComponent },
       { path: 'register', component: RegisterComponent },
-      { path: '**', component: PageNotFoundComponent },
+      { path: 'test-error', component: TestErrorComponent },
+      { path: '**', component: PageNotFoundComponent, pathMatch: 'full' },
     ]),
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
