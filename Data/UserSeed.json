@@ -1,0 +1,82 @@
+[
+  {
+    "UserName": "Lisa",
+    "Role": "User",
+    "CreatedDate": "2023-02-01",
+    "LastLoginDate": "2023-03-07",
+    "Jobs": [
+      {
+        "CompanyName": "ABC Company",
+        "JobTitle": "Customer Service Rep",
+        "JobDescription": "Handles customer relations.",
+        "City": "Greenbush",
+        "State": "IL",
+        "SkillLevel": "Entry",
+        "SalaryRange": "50,000",
+        "RemoteHybridOnsite": "Hybrid",
+        "URLListing": "www.test.com",
+        "Status": "In progress"
+      }
+    ]
+  },
+  {
+    "UserName": "Karen",
+    "Role": "User",
+    "CreatedDate": "2023-02-01",
+    "LastLoginDate": "2023-03-07",
+    "Jobs": [
+      {
+        "CompanyName": "The Data Store",
+        "JobTitle": "Data Entry",
+        "JobDescription": "Does some data entry work.",
+        "City": "Chicago",
+        "State": "IL",
+        "SkillLevel": "Entry",
+        "SalaryRange": "75,000",
+        "RemoteHybridOnsite": "Remote",
+        "URLListing": "www.dataTest.com",
+        "Status": "Applied"
+      }
+    ]
+  },
+  {
+    "UserName": "Mark",
+    "Role": "User",
+    "CreatedDate": "2023-03-01",
+    "LastLoginDate": "2023-04-03",
+    "Jobs": [
+      {
+        "CompanyName": "Fork Lift Enterprise",
+        "JobTitle": "Fork Lift Driver",
+        "JobDescription": "Drive the forklift",
+        "City": "Schaumburg",
+        "State": "IL",
+        "SkillLevel": "Experienced",
+        "SalaryRange": "45,000",
+        "RemoteHybridOnsite": "Onsite",
+        "URLListing": "www.test.com",
+        "Status": "Call back"
+      }
+    ]
+  },
+  {
+    "UserName": "Jocko",
+    "Role": "User",
+    "CreatedDate": "2023-02-14",
+    "LastLoginDate": "2023-04-02",
+    "Jobs": [
+      {
+        "CompanyName": "Jocko Driving Uber Company",
+        "JobTitle": "Uber Driver",
+        "JobDescription": "Drive sharing",
+        "City": "Rolling Meadows",
+        "State": "IL",
+        "SkillLevel": "Experienced",
+        "SalaryRange": "55,000",
+        "RemoteHybridOnsite": "Onsite",
+        "URLListing": "www.drivet.com",
+        "Status": "Applied"
+      }
+    ]
+  }
+]

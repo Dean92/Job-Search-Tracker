@@ -1,11 +1,12 @@
 ﻿using JobSearchTracker.Data;
 using JobSearchTracker.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace JobSearchTracker.Controllers
 {
-	
+    [Authorize]
 	public class UsersController : BaseApiController
 	{
         private readonly DataContext _context;
