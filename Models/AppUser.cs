@@ -14,7 +14,9 @@ namespace JobSearchTracker.Models
         public byte[] PasswordSalt { get; set; }
         public string Role { get; set; }
 
-        public DateTime CreatedDate { get; set; }
-        public DateTime LastLoginDate { get; set; }
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+        public DateTime LastLoginDate { get; set; } = DateTime.UtcNow;
+
+        public List<Jobs> Jobs { get; set; } = new ();
     }
 }
