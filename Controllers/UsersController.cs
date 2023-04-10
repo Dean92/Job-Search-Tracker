@@ -1,33 +1,41 @@
-﻿using JobSearchTracker.Data;
+﻿using AutoMapper;
+using JobSearchTracker.Interfaces;
 using JobSearchTracker.Models;
+using JobSearchTracker.Models.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace JobSearchTracker.Controllers
 {
-    [Authorize]
+	[Authorize]
 	public class UsersController : BaseApiController
 	{
-        private readonly DataContext _context;
-        public UsersController(DataContext context)
-        {
-            _context = context;
-        }
+		private readonly IUserRepository _userRepository;
+		private readonly IMapper _mapper;
+		public UsersController(IUserRepository userRepository, IMapper mapper)
+		{
+			_mapper = mapper;
+			_userRepository = userRepository;
+			
+		}
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
-        {
-            var users = await _context.Users.ToListAsync();
+		[HttpGet]
+		public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
+		{
+			var users = await _userRepository.GetUsersAsync();
 
-            return users;
-        }
+			var usersToReturn = _mapper.Map<IEnumerable<UserMemDTO>>(users);
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<AppUser>> GetUser(int id)
-        {
-            return await _context.Users.FindAsync(id);
+			return Ok(usersToReturn);
+		}
 
-        }
-    }
+		[HttpGet("{username}")]
+		public async Task<ActionResult<UserMemDTO>> GetUser(string username)
+		{
+			var user = await _userRepository.GetUserByUserNameAsync(username);
+
+			return _mapper.Map<UserMemDTO>(user);
+
+		}
+	}
 }
