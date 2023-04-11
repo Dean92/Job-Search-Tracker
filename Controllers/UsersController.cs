@@ -24,17 +24,17 @@ namespace JobSearchTracker.Controllers
 		{
 			var users = await _userRepository.GetUsersAsync();
 
-			var usersToReturn = _mapper.Map<IEnumerable<UserMemDTO>>(users);
+			var usersToReturn = _mapper.Map<IEnumerable<UserInfoDTO>>(users);
 
 			return Ok(usersToReturn);
 		}
 
 		[HttpGet("{username}")]
-		public async Task<ActionResult<UserMemDTO>> GetUser(string username)
+		public async Task<ActionResult<UserInfoDTO>> GetUser(string username)
 		{
 			var user = await _userRepository.GetUserByUserNameAsync(username);
 
-			return _mapper.Map<UserMemDTO>(user);
+			return _mapper.Map<UserInfoDTO>(user);
 
 		}
 	}
