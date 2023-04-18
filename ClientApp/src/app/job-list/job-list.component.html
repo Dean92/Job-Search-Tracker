@@ -1,1 +1,25 @@
-<p>job-list works!</p>
+<table class="tw-mt-4">
+  <thead>
+    <tr>
+      A table with the list of client jobs here.
+    </tr>
+  </thead>
+</table>
+
+<h1>Jobs for User {{ user?.username }}</h1>
+
+<div *ngIf="userInfo">
+  <ul>
+    <li *ngFor="let job of userInfo.jobs">
+      <h3>{{ job.jobTitle }}</h3>
+      <p>{{ job.jobDescription }}</p>
+      <p>{{ job.companyName }}</p>
+      <p>{{ job.city }}, {{ job.state }}</p>
+      <p>{{ job.skillLevel }}</p>
+      <p>{{ job.salaryRange }}</p>
+      <p>{{ job.remoteHybridOnsite }}</p>
+      <p>{{ job.urlListing }}</p>
+      <p>{{ job.status }}</p>
+    </li>
+  </ul>
+</div>

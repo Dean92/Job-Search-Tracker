@@ -1,1 +1,9 @@
-<p>user-home works!</p>
+<div class="tw-mt-2" *ngIf="user">
+  <h1 class="tw-text-3xl">Your Job Search List</h1>
+  <div>
+    <p>Welcome {{ user.username | titlecase }}</p>
+    <p>Last login: {{ userInfo?.lastLoginDate | date }}</p>
+  </div>
+
+  <app-job-list [userInfo]="userInfo"></app-job-list>
+</div>

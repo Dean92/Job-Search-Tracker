@@ -1,6 +1,6 @@
 import { Job } from './job';
 
-export interface userMember {
+export interface UserInfo {
   id: number;
   userName: string;
   name: any;
