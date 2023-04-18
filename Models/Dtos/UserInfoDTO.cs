@@ -1,6 +1,6 @@
 ﻿namespace JobSearchTracker.Models.Dtos
 {
-	public class UserMemDTO
+	public class UserInfoDTO
 	{
 		public int Id { get; set; }
 		public string UserName { get; set; }

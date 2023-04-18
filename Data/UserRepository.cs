@@ -21,6 +21,17 @@ namespace JobSearchTracker.Data
 			return await _context.Users.Include(p => p.Jobs).SingleOrDefaultAsync(x => x.UserName == username);
 		}
 
+		public async Task<IEnumerable<Jobs>> GetJobsForUserAsync(string username)
+		{
+			var user = await _context.Users
+				.Include(u => u.Jobs)
+				.SingleOrDefaultAsync(u => u.UserName == username);
+
+			return user.Jobs;
+		}
+
+
+
 		public async Task<IEnumerable<AppUser>> GetUsersAsync()
 		{
 			return await _context.Users.Include(p => p.Jobs).ToListAsync();
