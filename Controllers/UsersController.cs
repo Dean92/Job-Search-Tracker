@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using JobSearchTracker.Extensions;
 using JobSearchTracker.Interfaces;
 using JobSearchTracker.Models;
 using JobSearchTracker.Models.Dtos;
@@ -16,7 +17,7 @@ namespace JobSearchTracker.Controllers
 		{
 			_mapper = mapper;
 			_userRepository = userRepository;
-			
+
 		}
 
 		[HttpGet]
@@ -36,6 +37,25 @@ namespace JobSearchTracker.Controllers
 
 			return _mapper.Map<UserInfoDTO>(user);
 
+		}
+
+		/// Add a method to add a new job to a user's list of jobs
+		[HttpPost("add-job")]
+		public async Task<ActionResult<UserInfoDTO>> AddJobToUser(Jobs jobInfo)
+		{
+			var user = await _userRepository.GetUserByUserNameAsync(User.GetUsername());
+
+			if (user == null) return NotFound();
+
+			var job = _mapper.Map<Jobs>(jobInfo);
+			user.Jobs.Add(job);
+			if (await _userRepository.SaveAllAsync())
+			{
+				return CreatedAtAction(nameof(GetUser), 
+					new { username = user.UserName }, _mapper.Map<JobsDto>(jobInfo));
+			}
+
+			return BadRequest("Failed to add job");
 		}
 	}
 }

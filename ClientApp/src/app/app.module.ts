@@ -18,6 +18,7 @@ import { SharedModule } from './_modules/shared.module';
 import { TestErrorComponent } from './errors/test-error/test-error.component';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
       { path: 'test-error', component: TestErrorComponent },
       { path: '**', component: PageNotFoundComponent, pathMatch: 'full' },
     ]),
+    ModalModule.forRoot(),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

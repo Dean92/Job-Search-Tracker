@@ -1,9 +1,4 @@
 <div class="tw-mt-2" *ngIf="user">
-  <h1 class="tw-text-3xl">Your Job Search List</h1>
-  <div>
-    <p>Welcome {{ user.username | titlecase }}</p>
-    <p>Last login: {{ userInfo?.lastLoginDate | date }}</p>
-  </div>
-
+  <!-- TODO: Add a last job added date to the user model -->
   <app-job-list [userInfo]="userInfo"></app-job-list>
 </div>
