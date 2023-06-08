@@ -43,4 +43,12 @@ export class JobListComponent implements OnInit {
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
+
+  // Create a deleteJob method that will delete a job from the user's job list
+
+  // create a function that takes in a string and removes all html characters
+  // and returns the string
+  removeHTMLTags(str: string) {
+    return str.replace(/<[^>]*>?/gm, '');
+  }
 }
