@@ -17,6 +17,8 @@ export class UserInfoService {
     return this.http.get<UserInfo>(this.baseUrl + 'users/' + username);
   }
 
+  addJob(userId: number, job: Job) {}
+
   // getJobsForUser(username: string): Observable<Job[]> {
   //   const url = `${this.baseUrl}users/${username}`;
   //   return this.http.get<Job[]>(url);

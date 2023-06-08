@@ -9,3 +9,7 @@
 body {
   font-family: 'Poppins', sans-serif;
 }
+
+.table-class {
+  @apply tw-border tw-border-grayishViolet tw-px-4 tw-py-2;
+}
