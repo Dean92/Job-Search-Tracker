@@ -42,12 +42,5 @@ namespace JobSearchTracker.Controllers
 
 			return Ok(serverErrorToReturn);
 		}
-
-		//[Authorize]
-		//[HttpGet("auth")]
-		//public ActionResult<string> GetSecret()
-		//{
-		//	return "secret text";
-		//}
 	}
 }

@@ -40,7 +40,7 @@ namespace JobSearchTracker.Controllers
 		}
 
 		/// Add a method to add a new job to a user's list of jobs
-		[HttpPost("add-job")]
+		[HttpPost("create-job")]
 		public async Task<ActionResult<UserInfoDTO>> AddJobToUser(Jobs jobInfo)
 		{
 			var user = await _userRepository.GetUserByUserNameAsync(User.GetUsername());
